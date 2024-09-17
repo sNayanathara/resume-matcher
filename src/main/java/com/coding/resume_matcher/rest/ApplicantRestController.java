@@ -27,10 +27,6 @@ public class ApplicantRestController {
     @GetMapping("/applicants/{applicantId}")
     public Applicant findById(@PathVariable int applicantId){
 
-        if (applicantId < 0 || applicantId > applicantService.findAll().size()){
-            throw new ApplicantNotFoundException("Applicant ID "+applicantId+ " not found");
-        }
-
         return  applicantService.findById(applicantId);
     }
 
@@ -57,9 +53,12 @@ public class ApplicantRestController {
     @DeleteMapping("/applicants/{applicantId}")
     public String deleteApplicant(@PathVariable int applicantId){
 
-        if (applicantId < 0 || applicantId > applicantService.findAll().size()){
-            throw new ApplicantNotFoundException("Applicant ID "+applicantId+ " not found");
+        Applicant applicant = applicantService.findById(applicantId);
+
+        if (applicant == null){
+            throw new RuntimeException("Applicant ID "+applicantId+ " not found");
         }
+
         applicantService.deleteById(applicantId);
 
         return "Deleted applicant with id "+applicantId;

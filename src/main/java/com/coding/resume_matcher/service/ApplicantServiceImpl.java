@@ -1,42 +1,49 @@
 package com.coding.resume_matcher.service;
 
-import com.coding.resume_matcher.dao.ApplicantDAO;
+import com.coding.resume_matcher.dao.ApplicantRepository;
 import com.coding.resume_matcher.entity.Applicant;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ApplicantServiceImpl implements ApplicantService{
 
-    ApplicantDAO applicantDAO;
+    ApplicantRepository applicantRepository;
 
     @Autowired
-    public ApplicantServiceImpl(ApplicantDAO theApplicantDAO){
-        applicantDAO = theApplicantDAO;
+    public ApplicantServiceImpl(ApplicantRepository theApplicantRepository){
+        applicantRepository = theApplicantRepository;
     }
 
     @Override
     public List<Applicant> findAll() {
-        return applicantDAO.findAll();
+        return applicantRepository.findAll();
     }
 
     @Override
     public Applicant findById(int id) {
-        return  applicantDAO.findById(id);
+        Optional<Applicant> result = applicantRepository.findById(id);
+
+        Applicant applicant = null;
+
+        if (result.isPresent()){
+            applicant = result.get();
+        }else {
+            throw new RuntimeException("Applicant with id "+id+" not found");
+        }
+        return applicant;
     }
 
     @Override
-    @Transactional
     public Applicant save(Applicant applicant) {
-        return applicantDAO.save(applicant);
+        return applicantRepository.save(applicant);
     }
 
     @Override
-    @Transactional
     public void deleteById(int id) {
-        applicantDAO.deleteById(id);
+        applicantRepository.deleteById(id);
     }
 }
