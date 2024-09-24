@@ -1,11 +1,12 @@
 package com.coding.resume_matcher.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "applicant")
 public class Applicant {
@@ -32,15 +33,6 @@ public class Applicant {
 
     @Column(name = "skills")
     private String skills;
-
-    public Applicant(String firstName, String lastName, String email, String location, int yearsOfExprnce, String skills) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.location = location;
-        this.yearsOfExprnce = yearsOfExprnce;
-        this.skills = skills;
-    }
 
     @Override
     public String toString() {
