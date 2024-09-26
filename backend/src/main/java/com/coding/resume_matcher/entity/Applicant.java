@@ -34,6 +34,9 @@ public class Applicant {
     @Column(name = "skills")
     private String skills;
 
+    @Column(name = "interested_field")
+    private String appliedDesignation;
+
     @Override
     public String toString() {
         return "Applicant{" +
@@ -44,6 +47,7 @@ public class Applicant {
                 ", location='" + location + '\'' +
                 ", yearsOfExprnce=" + yearsOfExprnce +
                 ", skills='" + skills + '\'' +
+                ", appliedDesignation='" + appliedDesignation + '\'' +
                 '}';
     }
 }

@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("http://localhost:3000")
 public interface ApplicantRepository extends JpaRepository<Applicant, Integer> {
 
-    @Query("select a from Applicant a where (:location is null or a.location like %:location%) and (:yearsOfExprnce is null or a.yearsOfExprnce >=:yearsOfExprnce)")
+    @Query("select a from Applicant a where (:location is null or a.location like %:location%) and " +
+            "(:yearsOfExprnce is null or a.yearsOfExprnce >=:yearsOfExprnce) and"+
+            "(:appliedDesignation is null or a.appliedDesignation >=:appliedDesignation)")
     Page<Applicant> findApplicantsByCriteria(@Param("location") String location,
-                                             @Param("yearsOfExprnce") int yearsOfExprnce,
+                                             @Param("yearsOfExprnce") Integer yearsOfExprnce,
+                                             @Param("appliedDesignation") String appliedDesignation,
                                              Pageable pageable);
 }
