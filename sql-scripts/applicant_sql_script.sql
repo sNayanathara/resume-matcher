@@ -24,10 +24,10 @@ CREATE TABLE `applicant` (
 --
 
 INSERT INTO `applicant` VALUES 
-	(1,'Leslie','Andrews','leslie@gmail.com','Vantaa, Finland',2,'Java', 'SoftwareDev'),
+	(1,'Leslie','Andrews','leslie@gmail.com','Vantaa, Finland',2,'Java', 'Software Developer'),
 	(2,'Emma','Baumgarten','emma@gmail.com','Uusimaa, Finland',3,'Kubernetes,Docker', 'DevOps'),
-	(3,'Avani','Gupta','avani@gmail.com','Turku, Finland',1,'Manufacturing, Supplu Chain','Consultant'),
-	(4,'Yuri','Petrov','yuri@gmail.com','Tampare, Finland',7,'MySQL','DatabaseEngi'),
+	(3,'Avani','Gupta','avani@gmail.com','Turku, Finland',1,'Manufacturing, Supplu Chain','Business Analyst'),
+	(4,'Yuri','Petrov','yuri@gmail.com','Tampare, Finland',7,'MySQL','Database Engineer'),
 	(5,'Juan','Vega','juan@gmail.com','Aviapolis, Finland',5,'HR, Account, Finance','Accountant'),
-    (6,'Kashi','Jason','kashi@gmail.com','Tikkurila, Finland',5,'.NET, React', 'SoftwareDev');
+    (6,'Kashi','Jason','kashi@gmail.com','Tikkurila, Finland',5,'.NET, React', 'Software Developer');
 
