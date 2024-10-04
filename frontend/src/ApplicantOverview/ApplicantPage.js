@@ -19,6 +19,7 @@ const UrlContextProvider = ({ children }) => {
 
 const Applicant = () => {
     return (
+
         <div style={{backgroundColor:"rgba(192,192,192,0.3)", paddingBottom:"300px"}}>
             <div>
                 <Navigationbar/>

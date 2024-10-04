@@ -18,5 +18,5 @@ public interface ApplicantRepository extends JpaRepository<Applicant, Integer> {
     Page<Applicant> findApplicantsByCriteria(@Param("location") String location,
                                              @Param("yearsOfExprnce") Integer yearsOfExprnce,
                                              @Param("appliedDesignation") String appliedDesignation,
-                                         git     Pageable pageable);
+                                             Pageable pageable);
 }

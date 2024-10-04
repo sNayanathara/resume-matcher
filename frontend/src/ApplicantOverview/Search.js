@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import {UrlContext} from './ApplicantPage';
 import Row from 'react-bootstrap/Row';
 
-
 const Search = () => {
 
     const [applicantDetails, setApplicantDetails] = useState({
@@ -67,7 +66,7 @@ const Search = () => {
         <Form.Select aria-label="designation" name="designation" value={applicantDetails.designation} onChange={handleChange}>
             <option value="Accountant">Accountant</option>
             <option value="Business Analyst">Business Analyst</option>
-            <option value="Database Engineer">Database Engineer</option>
+            <option value="Database Engineers">Database Engineer</option>
             <option value="DevOps">DevOps</option>
             <option value="Software Developer">Software Developer</option>
         </Form.Select>
