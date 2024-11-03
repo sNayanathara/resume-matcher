@@ -8,15 +8,14 @@ USE `resume_matcher_directory`;
 DROP TABLE IF EXISTS `applicant`;
 
 CREATE TABLE `applicant` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL,
   `location` varchar(45) DEFAULT NULL,
   `years_of_exprnce` int DEFAULT NULL,
   `skills` varchar(3000) DEFAULT NULL,
   `interested_field` varchar(50) DEFAULT NUll,
   PRIMARY KEY (`id`)
+  --  KEY `FK_DETAIL_idx` (`user_id`),
+  -- CONSTRAINT `FK_DETAIL` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
@@ -24,10 +23,10 @@ CREATE TABLE `applicant` (
 --
 
 INSERT INTO `applicant` VALUES 
-	(1,'Leslie','Andrews','leslie@gmail.com','Vantaa, Finland',2,'Java', 'Software Developer'),
-	(2,'Emma','Baumgarten','emma@gmail.com','Uusimaa, Finland',3,'Kubernetes,Docker', 'DevOps'),
-	(3,'Avani','Gupta','avani@gmail.com','Turku, Finland',1,'Manufacturing, Supplu Chain','Business Analyst'),
-	(4,'Yuri','Petrov','yuri@gmail.com','Tampare, Finland',7,'MySQL','Database Engineer'),
-	(5,'Juan','Vega','juan@gmail.com','Aviapolis, Finland',5,'HR, Account, Finance','Accountant'),
-    (6,'Kashi','Jason','kashi@gmail.com','Tikkurila, Finland',5,'.NET, React', 'Software Developer');
+	(1,'Vantaa, Finland',2,'Java', 'Software Developer'),
+	(2,'Uusimaa, Finland',3,'Kubernetes,Docker', 'DevOps'),
+	(3,'Turku, Finland',1,'Manufacturing, Supplu Chain','Business Analyst'),
+	(4,'Tampare, Finland',7,'MySQL','Database Engineer'),
+	(5,'Finland',5,'HR, Account, Finance','Accountant'),
+    (6,'Tikkurila, Finland',5,'.NET, React', 'Software Developer');
 

@@ -25,8 +25,8 @@ const App = () => {
                         path="/profile"
                         element={<ApplicantProfile />}
                     />
-                 </Routes>
-                 </BrowserRouter>
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }

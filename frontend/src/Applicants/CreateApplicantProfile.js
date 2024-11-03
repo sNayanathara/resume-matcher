@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from "react-router-dom";
 
+
 const CreateApplicantProfile = () =>  {
 
     const [checked, setChecked] = useState();
@@ -13,6 +14,9 @@ const CreateApplicantProfile = () =>  {
         firstName:"",
         lastName:"",
         email:"",
+        phoneNo:"",
+        password:"",
+        matchingPassword:"",
         city:"",
         country:"",
         zip:"",
@@ -22,8 +26,8 @@ const CreateApplicantProfile = () =>  {
         skills:""
     });
 
-    const userProfilePage = () =>{
-        navigate("/profile")
+    const userProfilePage = (id) =>{
+        navigate("/profile", { state: id })
     };
 
     const handleChange = (e)=> {
@@ -38,8 +42,8 @@ const CreateApplicantProfile = () =>  {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("inside submit");
-        const {firstName, lastName, email, city, country, zip, yrsExprnce, designation, skills} = applicantDetails;
-        fetch("http://localhost:8080/api/applicants", {
+        const {firstName, lastName, email, phoneNo, password, matchingPassword, city, country, zip, yrsExprnce, designation, skills} = applicantDetails;
+        fetch("http://localhost:8080/api/applicants/register", {
             method:'POST',
             headers: {
                 'Accept': 'application/json',
@@ -49,15 +53,19 @@ const CreateApplicantProfile = () =>  {
                 firstName: firstName,
                 lastName: lastName,
                 email:email,
-                location:`${city} ${country} ${zip}`,
+                phoneNumber: phoneNo,
+                password:password,
+                matchingPassword:matchingPassword,
+                userType:"Applicant",
+                location:`${city}, ${country}, ${zip}`,
                 yearsOfExprnce: yrsExprnce,
                 skills:skills,
                 appliedDesignation: designation
             })
         })
         .then((response) => response.json())
-        .then((body) => console.log(body));
-        userProfilePage();
+        .then((body) => userProfilePage(body.id));
+        // userProfilePage();
     };
 
   return (
@@ -75,9 +83,14 @@ const CreateApplicantProfile = () =>  {
         </Form.Group>
       </Row>
 
-      <Form.Group className="mb-3" controlId="formGridEmail">
+        <Form.Group className="mb-3" controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" name="email" placeholder="Enter email" value={applicantDetails.email} onChange={handleChange}/>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formGridPhoneNo">
+          <Form.Label>Phone No</Form.Label>
+          <Form.Control type="text" name="phoneNo" placeholder="Enter phone no" value={applicantDetails.phoneNo} onChange={handleChange}/>
         </Form.Group>
 
       <Row className="mb-3">
@@ -111,6 +124,18 @@ const CreateApplicantProfile = () =>  {
         <Form.Label>Skills</Form.Label>
         <Form.Control type="text" placeholder="Skills" name="skills" value={applicantDetails.skills} onChange={handleChange}/>
       </Form.Group>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" name="password" value={applicantDetails.password} onChange={handleChange}/>
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridMatchingPassword">
+          <Form.Label>Re-Type Password</Form.Label>
+          <Form.Control type="password" name="matchingPassword" value={applicantDetails.matchingPassword} onChange={handleChange}/>
+        </Form.Group>
+      </Row>
 
       {/* <Link to="/profile" className="btn btn-secondary" type="submit">Submit</Link> */}
       <Button variant="primary" type="submit">
